@@ -28,7 +28,7 @@
     let popupDiv;
     let textarea1, textarea2, textarea3;
     let sourceLang = 'tr';
-    let targetLang = 'en';
+    let targetLang = 'en';  // bu kısımdan hedef dili değiştirebilirsiniz
     let isAltPressed = false;
     let timeoutId;
 
