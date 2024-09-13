@@ -157,6 +157,42 @@
             }
         });
     }
+
+    function checkGrammar(text, callback) {
+        GM_xmlhttpRequest({
+            method: 'POST',
+            url: 'https://api.languagetool.org/v2/check',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            data: `text=${encodeURIComponent(text)}&language=tr`,
+            onload: function(response) {
+                try {
+                    const result = JSON.parse(response.responseText);
+                    const corrections = [];
+
+                    result.matches.forEach(match => {
+                        const message = match.message;
+                        const suggestion = match.replacements.length > 0 ? match.replacements[0].value : '';
+                        const context = match.context.text;
+
+                        corrections.push({
+                            message: message,
+                            suggestion: suggestion,
+                            context: context
+                        });
+                    });
+
+                    callback(corrections);
+                } catch (e) {
+                    console.error('Dil bilgisi hatası:', e);
+                }
+            },
+            onerror: function() {
+                console.error('Dil bilgisi kontrol hatası!');
+            }
+        });
+    }
 })();
 ```
 
