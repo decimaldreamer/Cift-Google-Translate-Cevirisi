@@ -97,7 +97,7 @@
         popupDiv.appendChild(textarea3);
 
         textarea1.placeholder = "Türkçe metin yazın...";
-        textarea2.placeholder = "İngilizce çeviri...";
+        textarea2.placeholder = "Çevirilmiş Metin";
         textarea3.placeholder = "Geri Türkçeye çeviri...";
 
         textarea1.addEventListener('input', function() {
@@ -113,7 +113,7 @@
         });
 
         const copyButton = document.createElement('button');
-        copyButton.innerText = 'İngilizceyi Kopyala';
+        copyButton.innerText = 'Çeviriyi Kopyala';
         copyButton.style.cursor = 'pointer';
         copyButton.style.marginTop = '10px';
         copyButton.style.padding = '10px 20px';
